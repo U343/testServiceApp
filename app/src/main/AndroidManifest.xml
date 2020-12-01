@@ -9,13 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ServiceApp">
-        <activity android:name=".start_activity.MainActivity">
+        <activity android:name=".start_activity.presentation.view.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:label="cats" android:name=".cat_facts.presentation.view.CatFactsActivity"/>
     </application>
 
 </manifest>
