@@ -1,8 +1,8 @@
-package com.example.serviceapp
+package com.example.serviceapp.start_activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import com.example.serviceapp.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
