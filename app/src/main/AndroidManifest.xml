@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:label="cats" android:name=".cat_facts.presentation.view.CatFactsActivity"/>
-        <activity android:label="phone info" android:name=".broadcast_receiver.presentation.view.ReceiverActivity"/>
+        <activity android:label="phone info" android:name=".broadcast_receiver_example.presentation.view.PhoneInfoActivity"/>
     </application>
 
 </manifest>

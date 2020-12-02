@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.example.serviceapp.R
-import com.example.serviceapp.broadcast_receiver.presentation.view.ReceiverActivity
+import com.example.serviceapp.broadcast_receiver_example.presentation.view.PhoneInfoActivity
 import com.example.serviceapp.cat_facts.presentation.view.CatFactsActivity
 import com.example.serviceapp.start_activity.presentation.router.StartActivityRouter
 import kotlinx.android.synthetic.main.start_activity.*
@@ -26,7 +26,7 @@ class StartActivity : AppCompatActivity(), StartActivityRouter {
     }
 
     override fun goToPhoneInfo() {
-        startActivity(Intent(this, ReceiverActivity::class.java))
+        startActivity(Intent(this, PhoneInfoActivity::class.java))
     }
 
 
