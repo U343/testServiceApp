@@ -30,13 +30,13 @@ class CatFactsViewModel(private val repository: CatRepositoryApi) : ViewModel() 
 
 
         val thread1 = repository.getCatFact()
-            .doOnSuccess({ Log.d("threadManage", "thread1 " + Thread.currentThread().name) })
-            .subscribeOn(Schedulers.io())
+            .doOnSuccess { Log.d("threadManage", "thread1 " + Thread.currentThread().name) }
+                .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
         val thread2 = repository.getCatFact()
-            .doOnSuccess({ Log.d("threadManage", "thread2 " + Thread.currentThread().name) })
-            .subscribeOn(Schedulers.io())
+            .doOnSuccess { Log.d("threadManage", "thread2 " + Thread.currentThread().name) }
+                .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
         val result = zip(

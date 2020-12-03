@@ -49,6 +49,7 @@ class PhoneInfoFragment : Fragment() {
 
     private fun registerBroadcastReceiver() {
         br = MyBroadcastReceiver()
+
         val filter = IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION).apply {
             addAction(Intent.ACTION_BATTERY_CHANGED)
         }
