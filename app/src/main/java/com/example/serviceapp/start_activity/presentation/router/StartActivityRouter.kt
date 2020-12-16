@@ -4,4 +4,6 @@ interface StartActivityRouter {
     fun goToCatFacts()
 
     fun goToPhoneInfo()
+
+    fun goToServiceProgress()
 }

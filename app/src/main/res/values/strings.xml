@@ -4,10 +4,14 @@
     <!-- Start Activity -->
     <string name="start_cat_facts_button">Cat facts</string>
     <string name="start_phone_info_button">Phone info</string>
+    <string name="start_service_progress_button">Service progress</string>
 
     <!-- Cat facts Fragment -->
     <string name="cat_facts_get_facts">Get facts</string>
 
     <!-- Broadcast receiver Fragment -->
     <string name="receiver_battery_level_title">Battery level:</string>
+
+    <!-- Service progress bar Fragment -->
+    <string name="service_fragment_start_button">Start</string>
 </resources>

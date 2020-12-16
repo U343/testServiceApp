@@ -7,6 +7,7 @@ import android.util.Log
 import com.example.serviceapp.R
 import com.example.serviceapp.broadcast_receiver_example.presentation.view.PhoneInfoActivity
 import com.example.serviceapp.cat_facts.presentation.view.CatFactsActivity
+import com.example.serviceapp.service_progress_bar.presentation.view.ServiceProgressActivity
 import com.example.serviceapp.start_activity.presentation.router.StartActivityRouter
 import kotlinx.android.synthetic.main.start_activity.*
 
@@ -19,6 +20,7 @@ class StartActivity : AppCompatActivity(), StartActivityRouter {
 
         start_cats_facts_button.setOnClickListener { goToCatFacts() }
         start_phone_info_button.setOnClickListener { goToPhoneInfo() }
+        start_service_progress_button.setOnClickListener { goToServiceProgress() }
     }
 
     override fun goToCatFacts() {
@@ -29,5 +31,7 @@ class StartActivity : AppCompatActivity(), StartActivityRouter {
         startActivity(Intent(this, PhoneInfoActivity::class.java))
     }
 
-
+    override fun goToServiceProgress() {
+        startActivity(Intent(this, ServiceProgressActivity::class.java))
+    }
 }
