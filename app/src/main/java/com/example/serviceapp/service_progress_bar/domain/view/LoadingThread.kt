@@ -16,6 +16,6 @@ class LoadingThread(private val stopParentService: Consumer<Int>, private val pr
 
         Log.d("ServiceManage", "LoadingThread ${currentThread().name}")
         sleep(2000)
-        stopParentService.accept(processId)
+        //stopParentService.accept(processId)
     }
 }
