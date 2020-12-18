@@ -8,10 +8,14 @@ import android.util.Log
 import com.example.serviceapp.service_progress_bar.domain.view.LoadingThread
 import java.util.*
 import java.util.function.Consumer
+import kotlin.random.Random
 
 class CustomService : Service() {
     private val stopServiceConsumer = Consumer<Int> { startId -> stopSelf(startId) }
+
     private val binder = CustomBinder()
+    private var serviceId: Int = 0
+    private lateinit var looperThread: LoadingThread
 
     override fun onBind(intent: Intent?): IBinder {
         Log.d("ServiceManage", "Service bind ${Thread.currentThread().name}")
@@ -25,7 +29,8 @@ class CustomService : Service() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        LoadingThread(stopServiceConsumer, startId).start()
+        serviceId = startId
+
         Log.d("ServiceManage", "Service start")
         return START_NOT_STICKY
     }
@@ -40,13 +45,14 @@ class CustomService : Service() {
         Log.d("ServiceManage", "Service destroy ${Thread.currentThread().name}")
     }
 
-    fun stopService() {
-        stopSelf()
+    fun startLoadingThread(workConsumer: Consumer<Int>) {
+        Log.d("ServiceManage", "into startLoadingThread")
+        looperThread = LoadingThread(stopServiceConsumer, workConsumer, serviceId)
+        looperThread.start()
     }
 
     fun getRandomNum(): Int {
-        stopService()
-        return Random().nextInt(100)
+        return Random.nextInt(100)
     }
 
     inner class CustomBinder : Binder() {

@@ -28,13 +28,13 @@ class ProgressBarFragment: Fragment() {
         override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
             val binder = service as CustomService.CustomBinder
             mService = binder.getService()
+            initViewModel()
             mBound = true
         }
 
         override fun onServiceDisconnected(name: ComponentName?) {
             mBound = false
         }
-
     }
 
     companion object {
@@ -72,18 +72,23 @@ class ProgressBarFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initViewModel()
 
         service_start_progress_button.setOnClickListener {
-            if (mBound) {
-                Log.d("ServiceManage", "number ${mService?.getRandomNum()}")
-            }
+            viewModel.startLoadingData()
+            Log.d("serviceManage", "click generate $mService")
+            service_text_view_progress.text = mService?.getRandomNum().toString()
         }
     }
 
    private fun initViewModel() {
 
+       Log.d("serviceManage", "click load 1 $mService")
        viewModel = ViewModelProvider(this, ProgressBarViewModelFactory(mService)).get(ProgressBarViewModel::class.java)
+
+       viewModel.loadingIntStatus.observe(this) { progress ->
+           service_progress_bar.progress = progress
+           service_text_view_progress.text = progress.toString()
+       }
    }
 
     private fun isMyServiceRunning(): Boolean {
