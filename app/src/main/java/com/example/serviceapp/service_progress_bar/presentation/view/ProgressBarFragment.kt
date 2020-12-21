@@ -28,8 +28,8 @@ class ProgressBarFragment: Fragment() {
         override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
             val binder = service as CustomService.CustomBinder
             mService = binder.getService()
-            initViewModel()
             mBound = true
+            initViewModel()
         }
 
         override fun onServiceDisconnected(name: ComponentName?) {
@@ -45,19 +45,6 @@ class ProgressBarFragment: Fragment() {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-
-        if (!isMyServiceRunning()) {
-            val intent = Intent(requireActivity(), CustomService::class.java)
-            requireActivity().startService(intent)
-        }
-
-        Intent(requireActivity(), CustomService::class.java).also { intentBind ->
-            requireActivity().bindService(intentBind, connection, Context.BIND_AUTO_CREATE)
-        }
-    }
-
     override fun onStop() {
         super.onStop()
         mBound = false
@@ -65,24 +52,30 @@ class ProgressBarFragment: Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        Log.d("fragmentLifecycle", "ProgressBarFragment")
+
+        if (!isMyServiceRunning()) {
+            val intent = Intent(requireActivity(), CustomService::class.java)
+            requireActivity().startService(intent)
+        }
+        Log.d("serviceManage", "onCreateView")
+        Intent(requireActivity(), CustomService::class.java).also { intentBind ->
+            requireActivity().bindService(intentBind, connection, Context.BIND_AUTO_CREATE)
+        }
+
         return inflater.inflate(R.layout.service_progress_bar_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         service_start_progress_button.setOnClickListener {
             viewModel.startLoadingData()
             Log.d("serviceManage", "click generate $mService")
-            service_text_view_progress.text = mService?.getRandomNum().toString()
+            //service_text_view_progress.text = mService?.getRandomNum().toString()
         }
     }
 
    private fun initViewModel() {
-
-       Log.d("serviceManage", "click load 1 $mService")
        viewModel = ViewModelProvider(this, ProgressBarViewModelFactory(mService)).get(ProgressBarViewModel::class.java)
 
        viewModel.loadingIntStatus.observe(this) { progress ->

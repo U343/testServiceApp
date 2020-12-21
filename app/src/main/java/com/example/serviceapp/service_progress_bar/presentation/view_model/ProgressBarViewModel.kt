@@ -1,5 +1,7 @@
 package com.example.serviceapp.service_progress_bar.presentation.view_model
 
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,7 +13,7 @@ class ProgressBarViewModel(private val service: CustomService?) : ViewModel() {
 
     private val loadingStatusConsumer = Consumer<Int> {
         Log.d("ServiceManage", "LoadingThread loadValue = $it")
-        loadingIntStatus.value = it
+        Handler(Looper.getMainLooper()).post { loadingIntStatus.value = it }
     }
 
     fun startLoadingData() {

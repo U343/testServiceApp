@@ -23,7 +23,7 @@ class ServiceProgressActivity : AppCompatActivity(), ServiceProgressRouter {
     }
 
     private fun showFragment(fragment: Fragment, toBackStack: Boolean, tag: String) {
-        val fragmentManager = supportFragmentManager
+            val fragmentManager = supportFragmentManager
 
 
         Log.d("fragmentLifecycle", "ServiceProgressActivity showFragment")
