@@ -27,7 +27,9 @@
         <activity android:label="phone info" android:name=".view_pager_example.presentation.view.StartPagerActivity"/>
         <activity android:label="phone info" android:name=".view_pager_example.presentation.view.FinishPagerActivity"/>
         <activity android:label="service progress" android:name=".service_progress_bar.presentation.view.ServiceProgressActivity"/>
-
+        <activity android:label="service progress"
+            android:name=".coordinator.presentation.view.CoordinatorActivity"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

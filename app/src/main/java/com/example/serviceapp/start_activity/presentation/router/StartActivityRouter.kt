@@ -6,4 +6,6 @@ interface StartActivityRouter {
     fun goToPhoneInfo()
 
     fun goToServiceProgress()
+
+    fun goToCoordinatorActivity()
 }
