@@ -8,4 +8,6 @@ interface StartActivityRouter {
     fun goToServiceProgress()
 
     fun goToCoordinatorActivity()
+
+    fun goToBroadCastReceiver()
 }

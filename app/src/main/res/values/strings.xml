@@ -6,6 +6,7 @@
     <string name="start_phone_info_button">Phone info</string>
     <string name="start_service_progress_button">Service progress</string>
     <string name="start_coordinator_activity_button">Coordinator activity</string>
+    <string name="start_broadcast_activity_button">Broadcast activity</string>
 
     <!-- Cat facts Fragment -->
     <string name="cat_facts_get_facts">Get facts</string>
